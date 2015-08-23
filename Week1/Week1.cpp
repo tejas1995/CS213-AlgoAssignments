@@ -31,6 +31,25 @@ double max_fall(uLong n)
 
 }
 
+double max_fall_rate(uLong n)
+{
+    double max_fall_rate = 0.0;
+    double prev_func_val = f(1);
+
+    for(uLong i = 2; i <= n; i++)
+    {
+        double current_func_val = f(i);
+        double current_fall_rate = prev_func_val - current_func_val;
+        
+        if(current_fall_rate > max_fall_rate)
+            max_fall_rate = current_fall_rate;
+
+        prev_func_val = current_func_val;
+    }
+
+    return max_fall_rate;
+}
+
 int main()
 {
 
@@ -38,4 +57,6 @@ int main()
     cin >> p >> a >> b >> c >> d >> n;
 
     cout << setprecision(6) << fixed << max_fall(n) << endl;
+    cout << setprecision(6) << fixed << max_fall_rate(n) << endl;
+    
 }
