@@ -44,14 +44,6 @@ bool find_line_segments(Division division)
 
     Division new_ccw_division, new_cw_division;
     LineSegment div_ls;
-    /*cout << "New Division\n\nRed Points: ";
-    for(int i = 0; i < division.num_points; i++)
-        cout << red_point[ division.list_red_pt_index[i] ].x << " " << red_point[ division.list_red_pt_index[i] ].y << ", ";
-
-    cout << "\nBlue Points: ";
-    for(int i = 0; i < division.num_points; i++)
-        cout << blue_point[ division.list_blue_pt_index[i] ].x << " " << blue_point[ division.list_blue_pt_index[i] ].y << ", ";
-    */
 
     int div_red_pt_index = division.list_red_pt_index[0];
     Point div_red_pt = red_point[ div_red_pt_index ];
@@ -80,15 +72,11 @@ bool find_line_segments(Division division)
                     num_blue_pts_ccw++;
         }
 
-        if(num_red_pts_ccw == num_blue_pts_ccw)
+        if(num_red_pts_ccw == num_blue_pts_ccw) //Correct division found, with equal red and pts with same orientation
         {
 
             div_ls.red_pt_index = div_red_pt_index;
             div_ls.blue_pt_index = div_blue_pt_index;
-
-            //cout << "\nDivision LS: \n";
-            //cout << red_point[div_red_pt_index].x << " " << red_point[div_red_pt_index].y << endl;
-            //cout << blue_point[div_blue_pt_index].x << " " << blue_point[div_blue_pt_index].y << endl;
 
             for(int j = 0; j < division.num_points; j++)
             {
@@ -120,8 +108,8 @@ bool find_line_segments(Division division)
 
     }
 
+    //Create new non-intersecting line segment
     list_line_segments.push_back(div_ls);
-    //cout << "-------------------------\n";
 
     if(new_ccw_division.num_points > 0)
         find_line_segments(new_ccw_division);
