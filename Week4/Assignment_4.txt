@@ -13,7 +13,7 @@ The other operations are
 //3. reset(i) : Reset the count of ith object to 0.
 //5. count(i) : Return the current count of ith object.
 //4. findMax() : Return the maximum count of the objects.
-5. numMax() : Return the number of objects having maximum count.
+//5. numMax() : Return the number of objects having maximum count.
 //6. printMax() : Print the list of objects with maximum count, in the
                 order in which they achieved that count value.
 
