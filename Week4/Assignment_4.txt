@@ -28,7 +28,7 @@ So along with this, we maintain a list of lists. All objects with the
 same count value will be in the same list. We maintain a list of these
 lists for distinct count values, sorted according to the values of the 
 count. Additionally, a vector will store iterators into the list to
-identify the current position of the object. 
+identify the current position of the object.
 
 An increment or decrement operation is performed by moving the object from
 its current list to the next (preceding) list with count value one more
@@ -37,7 +37,6 @@ inserted in the list of lists. Similarly, if a list with a given count
 becomes empty, it would have to be deleted. For each object, you
 will need to know, which list of lists does it belong to, which can be
 done by storing an iterator into the main list, with each object.
-
 
 You have to implement a class that supports these operations.
 All variables should be private to the class, and only these methods
