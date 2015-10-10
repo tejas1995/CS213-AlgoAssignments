@@ -62,7 +62,7 @@ public:
             list<int> newCountList;
             newCountList.push_back(i);
             webCountList.insert(nextPCListIter, newCountList);
-            pageCountList[i] = nextPCListIter;
+            pageCountList[i]++;
         }
         else
         {
@@ -72,7 +72,7 @@ public:
 
         //Find way to ID which element in currPCListIter is ith page, and delete it in O(1) time
         (*currPCListIter).erase(remove((*currPCListIter).begin(), (*currPCListIter).end(), i), (*currPCListIter).end());
-
+ 
         //Delete the list if empty
         if((*currPCListIter).empty() == true)
         {
@@ -93,7 +93,7 @@ public:
     {
         if(pageCount[i] > 0)
         {
-            bool currMaxCount;
+            bool currMaxCount = false;
             if(pageCount[i] == maxCount)
                 currMaxCount = true;       
             
@@ -115,8 +115,8 @@ public:
             {
                 list<int> newCountList;
                 newCountList.push_back(i);
-                webCountList.insert(prevPCListIter, newCountList);
-                pageCountList[i] = prevPCListIter;
+                webCountList.insert(currPCListIter, newCountList);
+                pageCountList[i]--;
             }
             else
             {
@@ -147,7 +147,7 @@ public:
     void reset(uLong i)
     {
 
-        bool currMaxCount;
+        bool currMaxCount = false;
         if(pageCount[i] == maxCount)
             currMaxCount = true;
 
@@ -236,8 +236,12 @@ int main()
     worldWideWeb.increment(1);
     worldWideWeb.increment(2);
     worldWideWeb.increment(0);
-    worldWideWeb.decrement(1);
+    worldWideWeb.increment(1);
+    worldWideWeb.increment(0);
+    worldWideWeb.increment(0);
+    worldWideWeb.increment(0);
     worldWideWeb.reset(0);
+    worldWideWeb.decrement(2);
     cout << worldWideWeb.findMax() << endl;
     cout << worldWideWeb.numMax() << endl;
     worldWideWeb.printMax();
